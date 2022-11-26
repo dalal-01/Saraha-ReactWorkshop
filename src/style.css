@@ -49,3 +49,12 @@ body {
 .share {
     margin: 0px auto 10px auto;
 }
+.message
+{
+    width: 15%;
+    border-radius: 6px;
+}
+.message:hover
+{
+    background-color: rgba(0, 0,0,0.2);
+}

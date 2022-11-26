@@ -5,6 +5,7 @@ import Login from './../Login/Login';
 import Register from './../Register/Register';
 import { Routes, Route } from 'react-router-dom';
 import User from '../User/User';
+import SendMessage from '../SendMessage/SendMessage';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path='Login' element={ <Login/>}></Route>
       <Route path='User' element={  <User/>}></Route>
       <Route path='*' element={ <Notfound/>}></Route>
+      <Route path='SendMessage' element={<SendMessage />}></Route>
     </Routes>
   </>
   );
