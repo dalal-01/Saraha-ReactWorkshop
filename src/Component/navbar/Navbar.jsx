@@ -13,6 +13,9 @@ export default function Navbar() {
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav ms-auto">
         <li className="nav-item">
+          <Link className="nav-link" to="User">Users</Link>
+        </li>
+        <li className="nav-item">
           <Link  className="nav-link" to="Register">Register</Link>
         </li>
         <li className="nav-item">
