@@ -1,6 +1,7 @@
 import React,{useState  , useEffect} from 'react'
 import { Link ,  useNavigate  } from 'react-router-dom';
 import axios from 'axios';
+import style from './Home.module.css';
 
 export default function Home() {
  
@@ -35,8 +36,9 @@ export default function Home() {
 
   <div className='row mt-5' >
     {users.map( (user,index) =>
-        <div className='col-md-2' onClick={()=>sendUserMessage(user._id)} key={index}>
-          <h2>{user.userName}</h2>
+        <div className='col-lg-4' onClick={()=>sendUserMessage(user._id)} key={index}>
+          <h3 className={`p-5 ${style.head}`}>{user.userName}</h3>
+          
         </div>  
     )}
   </div>

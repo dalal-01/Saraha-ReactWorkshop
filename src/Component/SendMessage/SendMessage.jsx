@@ -12,17 +12,18 @@ export default function SendMessage() {
 
 
     let getMessage=(e)=>{
-       
         let myMessage = {...message};
         myMessage[e.target.name] = e.target.value;
-        setMessage(myMessage)
+        //console.log(myMessage);
+        setMessage(myMessage);
+
    } 
      
    let sendMessage =async(e)=>
    {
         e.preventDefault();
         let {data}= await axios.post(`http://localhost:3000/api/v1/message/${currentId}`,message);
-        console.log(data)
+        console.log(data);
         if(data.message =='Dnoe ')
         alert("message sent")
    }
