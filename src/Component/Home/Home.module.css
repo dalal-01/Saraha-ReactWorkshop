@@ -1,0 +1,7 @@
+.head{
+    cursor: pointer;
+    
+}
+.head:hover{
+background-color: aqua;
+}
