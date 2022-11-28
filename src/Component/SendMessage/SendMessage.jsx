@@ -6,6 +6,7 @@ export default function SendMessage() {
 
     let [searchParams,setSearchParams] = useSearchParams();
     let currentId = searchParams.get('id');
+    let userName = searchParams.get('name');
     let [message , setMessage] = useState({
       text:'',
     })
@@ -16,7 +17,6 @@ export default function SendMessage() {
         myMessage[e.target.name] = e.target.value;
         //console.log(myMessage);
         setMessage(myMessage);
-
    } 
      
    let sendMessage =async(e)=>
@@ -28,11 +28,6 @@ export default function SendMessage() {
         alert("message sent")
    }
 
-   /* async function getUser()
-    {
-      let {data} =await axios.get(`http://localhost:3000/api/v1/message/${currentId}`);
-      console.log(data);
-   } */
      
     useEffect(()=>{
      // getUser();
@@ -45,7 +40,7 @@ export default function SendMessage() {
       <a data-toggle="modal" data-target="#profile">
         <img src="img/avatar.png" className="avatar"/>
       </a>
-      <h3 className="py-2">Ahmed Abd Al-Muti</h3>
+      <h3 className="py-2">{userName}</h3>
       <textarea name="text" onChange={getMessage} placeholder='Write a message' cols="10" rows="8" className='w-50 m-auto'></textarea>
       <button type='submit' className="message m-auto mt-3">Send Message</button>
     </div>

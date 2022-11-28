@@ -17,11 +17,11 @@ export default function Home() {
     getUsers();
   },[])
   
-  function sendUserMessage(id)
+  function sendUserMessage(id,name)
   {
     navigate({
       pathname:'/SendMessage',
-      search:`?id=${id}`,
+      search:`?id=${id}&name=${name}`,
     })
   }
  
@@ -36,9 +36,8 @@ export default function Home() {
 
   <div className='row mt-5' >
     {users.map( (user,index) =>
-        <div className='col-lg-4' onClick={()=>sendUserMessage(user._id)} key={index}>
+        <div className='col-lg-4' onClick={()=>sendUserMessage(user._id,user.userName)} key={index}>
           <h3 className={`p-5 ${style.head}`}>{user.userName}</h3>
-          
         </div>  
     )}
   </div>
