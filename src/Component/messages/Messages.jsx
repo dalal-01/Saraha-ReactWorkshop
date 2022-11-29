@@ -46,7 +46,7 @@ export default function Messages() {
       {messages.map( (msg,index) =>
           <div className=''  key={index}>
             <h3 className={`p-5`}>{msg.text}</h3>
-            <p>delete</p>
+            <p>deletee</p>
           </div>  
       )}
     </div>
