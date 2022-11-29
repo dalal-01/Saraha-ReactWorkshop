@@ -8,7 +8,7 @@ export default function Messages() {
     //let navigate = useNavigate();
     
   const deleteMsg =(messageid)=>{
-      axios.delete(`http://localhost:3000/api/v1/message/ ${messageid}`,{
+      axios.delete(`http://localhost:3000/api/v1/message/${messageid}`,{
         headers:{
           authorization:`tariq__${userToken}`,
         },
@@ -16,10 +16,8 @@ export default function Messages() {
           authorization:`tariq__${userToken}`,
         },
       })
-      .then((res)=> console.log("delete ",res))
-      .catch((error)=>{
-         console.error(error);
-      });
+      
+      
 
     };
 
@@ -37,12 +35,8 @@ export default function Messages() {
           setMsg(res.data.messageList
             );
          })
-         .catch((error)=>{
-          console.error(error);
-         });
-        } else {
-        console.log("error");
-        }
+       
+         } 
         
            
     };
