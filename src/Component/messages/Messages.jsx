@@ -1,17 +1,39 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+
 
 export default function Messages() {
     let [messages,setMsg] = useState([]);
+    const userToken=localStorage.getItem("token");
     //let navigate = useNavigate();
   
-    async function getMsg()
+    const getMsg = async()=>
     {
-        let {data} = await axios.get("localhost:3000/api/v1/message/");
-        setMsg(data);   
-    }
+      if(userToken?.length){
+        await axios.get("http://localhost:3000/api/v1/message",{
+          headers:{
+            authorization:`tariq__${userToken}`,
+          },
+         })
+         .then((res)=>{
+          
+          setMsg(res.data.messageList
+            );
+         })
+         .catch((error)=>{
+          console.error(error);
+         });
+        } else {
+        console.log("error");
+        }
+        
+           
+    };
+  console.log("3",messages);
+
     useEffect ( ()=>{
       getMsg();
-    },[]);
+    },[messages]);
     
    
     return (
@@ -23,7 +45,8 @@ export default function Messages() {
     <div className='row mt-5' >
       {messages.map( (msg,index) =>
           <div className=''  key={index}>
-            <h3 className={`p-5 ${style.head}`}>{msg.Messages}</h3>
+            <h3 className={`p-5`}>{msg.text}</h3>
+            <p>delete</p>
           </div>  
       )}
     </div>
@@ -33,4 +56,5 @@ export default function Messages() {
   
    </>
     )
-}
+      }
+    
