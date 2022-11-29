@@ -7,7 +7,7 @@ export default function Messages() {
     const userToken=localStorage.getItem("token");
     //let navigate = useNavigate();
     
-    function deleteMsg (messageid){
+  const deleteMsg =(messageid)=>{
       axios.delete(`http://localhost:3000/api/v1/message/ ${messageid}`,{
         headers:{
           authorization:`tariq__${userToken}`,
@@ -16,8 +16,12 @@ export default function Messages() {
           authorization:`tariq__${userToken}`,
         },
       })
+      .then((res)=> console.log("delete ",res))
+      .catch((error)=>{
+         console.error(error);
+      });
 
-    }
+    };
 
 
     const getMsg = async()=>
