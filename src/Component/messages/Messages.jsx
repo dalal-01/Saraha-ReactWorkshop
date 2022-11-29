@@ -6,7 +6,20 @@ export default function Messages() {
     let [messages,setMsg] = useState([]);
     const userToken=localStorage.getItem("token");
     //let navigate = useNavigate();
-  
+    
+    function deleteMsg (messageid){
+      axios.delete(`http://localhost:3000/api/v1/message/ ${messageid}`,{
+        headers:{
+          authorization:`tariq__${userToken}`,
+        },
+        params:{
+          authorization:`tariq__${userToken}`,
+        },
+      })
+
+    }
+
+
     const getMsg = async()=>
     {
       if(userToken?.length){
@@ -46,7 +59,8 @@ export default function Messages() {
       {messages.map( (msg,index) =>
           <div className=''  key={index}>
             <h3 className={`p-5`}>{msg.text}</h3>
-            <p>deletee</p>
+      
+            <button onClick={()=>deleteMsg(msg._id)}>deletee</button>
           </div>  
       )}
     </div>
