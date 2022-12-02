@@ -9,8 +9,6 @@ import SendMessage from '../SendMessage/SendMessage';
 import Messages from '../messages/Messages';
 import { useEffect, useState } from 'react';
 import jwtDecode from 'jwt-decode';
-
-
 function App() {
   let[loginData,setLoginData]=useState(null);
 
@@ -32,7 +30,7 @@ function App() {
       <Route path='Register' element={ <Register/>}></Route>
       <Route path='Login' element={ <Login setUserData={setUserData}/>}></Route>
       <Route path='User' element={  <User/>}></Route>
-      <Route path='messeges' element={     <Messages/>}></Route>
+      <Route path='Messages' element={<Message/>}></Route>
       <Route path='*' element={ <Notfound/>}></Route>
       <Route path='SendMessage' element={<SendMessage />}></Route>
     </Routes>

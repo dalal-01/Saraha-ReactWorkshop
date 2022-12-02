@@ -20,8 +20,8 @@ let getUser=(e)=>{
 }
 
 let navigate = useNavigate();
-function GoToUser(){
-    let path ='/User';
+function GoToMsg(){
+    let path ='/Messages';
     navigate(path);
 }
 
@@ -34,6 +34,7 @@ let submbitrData = async (e)=>{
         setUserData(); 
           localStorage.setItem('token',data.loginToken);
           GoToUser();
+          console.log(3);
       }
 
       else{
