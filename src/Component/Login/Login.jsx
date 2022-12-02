@@ -31,12 +31,10 @@ let submbitrData = async (e)=>{
       console.log(data);
       
       if(data.message=='login'){
-        setUserData(); 
           localStorage.setItem('token',data.loginToken);
-          GoToUser();
+          GoToMsg();
           console.log(3);
       }
-
       else{
           setMsgError(data.message)
         }

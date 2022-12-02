@@ -30,7 +30,7 @@ function App() {
       <Route path='Register' element={ <Register/>}></Route>
       <Route path='Login' element={ <Login setUserData={setUserData}/>}></Route>
       <Route path='User' element={  <User/>}></Route>
-      <Route path='Messages' element={<Message/>}></Route>
+      <Route path='Messages' element={<Messages />}></Route>
       <Route path='*' element={ <Notfound/>}></Route>
       <Route path='SendMessage' element={<SendMessage />}></Route>
     </Routes>

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {useEffect ,useState} from 'react';
 import axios from 'axios';
@@ -18,9 +17,6 @@ export default function Messages() {
           authorization:`tariq__${userToken}`,
         },
       })
-      
-      
-
     };
 
 
@@ -31,28 +27,21 @@ export default function Messages() {
           headers:{
             authorization:`tariq__${userToken}`,
           },
-         })
-         .then((res)=>{
-          
-          setMsg(res.data.messageList
-            );
-         })
-       
-         } 
-        
-           
+        })
+        .then((res)=>{
+          setMsg(res.data.messageList);
+        })
+        } 
     };
-  console.log("3",messages);
 
     useEffect ( ()=>{
       getMsg();
     },[messages]);
     
-   
     return (
-   <>
+  <>
   <div className="container text-center my-5 py-5 ">
-    <h4 className='fs-3 m-5'>Your Msg</h4>
+    <h4 className='fs-3 m-5'>Your Messages:</h4>
 
     </div>
     <div className='row mt-5' >
@@ -64,11 +53,7 @@ export default function Messages() {
           </div>  
       )}
     </div>
-  
-  
-
-  
-   </>
+  </>
     )
       }
     
