@@ -1,4 +1,7 @@
-import React from 'react'
+import React from 'react';
+import {useEffect ,useState} from 'react';
+import axios from 'axios';
+import style from './Mssg.module.css'
 
 export default function Messages() {
     let [messages,setMsg] = useState([]);

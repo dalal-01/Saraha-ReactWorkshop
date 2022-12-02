@@ -1,7 +1,21 @@
 .head{
-    cursor: pointer;
+
+    border: 2px  ;
+    border-radius: 12px;
+    padding: 5px;
+    background-color: hsl(176, 73%, 88%);
+
     
 }
+.i{
+    border: 2px  ;
+    border-radius: 30px;
+    padding: 16px;
+    background-color: white;
+}
 .head:hover{
-background-color: aqua;
+    background-color: hsl(177, 46%, 74%);
+}
+.msg{
+    cursor: pointer;
 }

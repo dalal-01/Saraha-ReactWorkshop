@@ -20,8 +20,8 @@ let getUser=(e)=>{
 }
 
 let navigate = useNavigate();
-function GoToUser(){
-    let path ='/User';
+function GoToMsg(){
+    let path ='/Messages';
     navigate(path);
 }
 
@@ -31,7 +31,7 @@ let submbitrData = async (e)=>{
       console.log(data);
       
       if(data.message=='login'){
-          GoToUser();
+        GoToMsg();
           console.log(3);
       }
 
