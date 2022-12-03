@@ -1,7 +1,7 @@
 import React from 'react';
 import {useEffect ,useState} from 'react';
 import axios from 'axios';
-import style from './Mssg.module.css'
+import styles from './Mssg.module.css';
 
 export default function Messages() {
     let [messages,setMsg] = useState([]);
@@ -40,19 +40,20 @@ export default function Messages() {
     
     return (
   <>
-  <div className="container text-center my-5 py-5 ">
-    <h4 className='fs-3 m-5'>Your Messages:</h4>
-
-    </div>
     <div className='row mt-5' >
       {messages.map( (msg,index) =>
-          <div className=''  key={index}>
-            <h3 className={`p-5`}>{msg.text}</h3>
+          <div className='row'  key={index}>
+          <div className="container text-center mt-5 p-5 ">
+           <div className={`col-md-12 ${styles.box} `}>
+            <div className="col-md-1 text-muted"><h4><i className={`  fa-solid fa-envelope-open`}></i>Your Msg</h4></div>
+            <h4 className={`p-5 ${styles.head}`}>{msg.text}</h4>
+            <button className={` ${styles.b}  `}   onClick={()=>deleteMsg(msg._id)}>Delete</button>
+          
+          </div>
+
       
-            <button onClick={()=>deleteMsg(msg._id)}>deletee</button>
-          </div>  
-      )}
-    </div>
+            </div>
+
   </>
     )
       }

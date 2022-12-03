@@ -32,8 +32,9 @@ let submbitrData = async (e)=>{
       
       if(data.message=='login'){
           localStorage.setItem('token',data.loginToken);
+          //console.log(data.loginToken)
+          setUserData();
           GoToMsg();
-          console.log(3);
       }
       else{
           setMsgError(data.message)
