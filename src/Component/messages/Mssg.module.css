@@ -1,0 +1,21 @@
+.b{
+    border-radius: 50px;
+    background-color: hsl(176, 73%, 88%) !important;
+    padding: 12px;
+    font-size: 20px;
+    border-color: hsl(176, 73%, 88%) !important;
+    cursor: pointer;
+}
+
+.b:hover{
+    background-color: hsl(177, 46%, 74%) !important;
+}
+.head{
+    font-family:cursive;
+
+}
+.box{
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px  hsl(177, 46%, 74%);
+}

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-export default function Login() {
+export default function Login({setUserData}) {
 
   let [User,SetUser]=useState({
     password:"",
@@ -31,10 +31,12 @@ let submbitrData = async (e)=>{
       console.log(data);
       
       if(data.message=='login'){
-        GoToMsg();
-          console.log(3);
+          localStorage.setItem('token',data.loginToken);
+          //console.log(data.loginToken)
+          setUserData();
+          GoToMsg();
+        
       }
-
       else{
           setMsgError(data.message)
         }
