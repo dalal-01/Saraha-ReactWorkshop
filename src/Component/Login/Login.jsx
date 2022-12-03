@@ -35,7 +35,6 @@ let submbitrData = async (e)=>{
           //console.log(data.loginToken)
           setUserData();
           GoToMsg();
-        
       }
       else{
           setMsgError(data.message)

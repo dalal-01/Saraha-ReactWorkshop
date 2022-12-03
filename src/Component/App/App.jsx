@@ -10,6 +10,7 @@ import Messages from '../messages/Messages';
 import { useEffect, useState } from 'react';
 import jwtDecode from 'jwt-decode';
 import Protocol from '../Proctcol/Protocol';
+
 function App() {
   let[loginData,setLoginData]=useState(null);
 
@@ -23,7 +24,8 @@ function App() {
     if(localStorage.getItem('token'))
     setUserData();
   },[])
-  function logout(){
+
+function logout(){
     localStorage.removeItem('token');
     setLoginData(null);
     Navigate('/Home'); 
@@ -41,6 +43,7 @@ function App() {
       <Route  element={<Protocol logindata={loginData}  />}   >
       <Route path='Messages' element={<Messages />}></Route>
       </Route>
+
       <Route path='*' element={ <Notfound/>}></Route>
       <Route path='SendMessage' element={<SendMessage />}></Route>
     </Routes>

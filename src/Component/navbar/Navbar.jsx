@@ -12,8 +12,12 @@ export default function Navbar({logout}) {
       Menu <span className="navbar-toggler-icon" />
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul className="navbar-nav ms-auto">
-    <li className="nav-item">
+
+      <ul className="navbar-nav ms-auto">
+      <li className="nav-item">
+          <Link  className="nav-link" to="messeges">messeges</Link>
+        </li>
+        <li className="nav-item">
           <Link  className="nav-link" to="Register">Register</Link>
         </li>
         <li className="nav-item">
