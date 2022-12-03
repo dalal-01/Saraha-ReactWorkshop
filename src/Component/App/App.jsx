@@ -9,7 +9,7 @@ import SendMessage from '../SendMessage/SendMessage';
 import Messages from '../messages/Messages';
 import { useEffect, useState } from 'react';
 import jwtDecode from 'jwt-decode';
-import Protocol from '../Proctcol/Protocol';
+import Protocol from '../Protocol/Protocol';
 
 function App() {
   let[loginData,setLoginData]=useState(null);
@@ -33,18 +33,17 @@ function logout(){
 
   return (
   <>
-    <Navbar  logindata={loginData} logout={logout}/>
+    <Navbar  loginData={loginData} logout={logout}/>
     <Routes>
-
       <Route path='/' element={ <Home/>}></Route>
-      <Route path='Register' element={ <Register/>}></Route>
-      <Route path='Login' element={ <Login setUserData={setUserData}/>}></Route>
-      <Route path='User' element={  <User/>}></Route>
-      <Route  element={<Protocol logindata={loginData}  />}   >
-      <Route path='Messages' element={<Messages />}></Route>
+      <Route  element={<Protocol loginData={loginData} />}  >
+        <Route path='User' element={ <User/>}></Route>
+        <Route path='Messages' element={<Messages />}></Route>
       </Route>
 
       <Route path='*' element={ <Notfound/>}></Route>
+      <Route path='Login' element={ <Login setUserData={setUserData}/>}></Route>
+      <Route path='Register' element={ <Register/>}></Route>
       <Route path='SendMessage' element={<SendMessage />}></Route>
     </Routes>
    

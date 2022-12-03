@@ -19,7 +19,6 @@ export default function Messages() {
       })
     };
 
-
     const getMsg = async()=>
     {
       if(userToken?.length){
@@ -40,21 +39,20 @@ export default function Messages() {
     
     return (
   <>
-    <div className='row mt-5' >
-      {messages.map( (msg,index) =>
-          <div className='row'  key={index}>
-          <div className="container text-center mt-5 p-5 ">
-           <div className={`col-md-12 ${styles.box} `}>
-            <div className="col-md-1 text-muted"><h4><i className={`  fa-solid fa-envelope-open`}></i>Your Msg</h4></div>
-            <h4 className={`p-5 ${styles.head}`}>{msg.text}</h4>
-            <button className={` ${styles.b}  `}   onClick={()=>deleteMsg(msg._id)}>Delete</button>
-          
-          </div>
-
-      
+    <div className="container text-center mt-5 p-5 ">
+      <div className='row'>
+        {messages.map( (msg,index) =>
+          <div className={`col-md-12 ${styles.box} `} key={index}>
+            <div className="col-md-1 text-muted">
+              <h4><i className={` fa-solid fa-envelope-open`}></i>Your Msg</h4>
             </div>
-
+            <h4 className={`p-5 ${styles.head}`}>{msg.text}</h4>
+            <button className={` ${styles.b}  `}  onClick={()=>deleteMsg(msg._id)}>Delete</button>
+          </div>
+        )}   
+        </div>
+    </div>
   </>
-    )
-      }
-    
+)
+}
+

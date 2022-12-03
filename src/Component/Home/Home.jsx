@@ -57,10 +57,7 @@ export default function Home() {
        <h3 className="col-md-1">{user.userName} <div className="col-md-1 fs-5 text-muted">{user.email}</div></h3>
        
        <div onClick={()=>sendUserMessage(user._id,user.userName)} className={`col-md-6 mt-2 ${style.msg}`}><i className="fa-solid fa-envelope fa-2x"></i></div>
-       
- 
-       
-          
+
         </div>  
     )}
   </div>

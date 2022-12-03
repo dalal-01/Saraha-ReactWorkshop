@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-export default function Navbar({logout}) {
+export default function Navbar({loginData , logout}) {
   return (
   <>
 <nav className="navbar navbar-expand-lg bg-custom navbar-dark bg-dark">
@@ -12,28 +12,42 @@ export default function Navbar({logout}) {
       Menu <span className="navbar-toggler-icon" />
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-
       <ul className="navbar-nav ms-auto">
-      <li className="nav-item">
-          <Link  className="nav-link" to="messeges">messeges</Link>
+        {loginData?
+        <>
+        <li className="nav-item">
+              <Link  className="nav-link" to="User">Users</Link>
         </li>
         <li className="nav-item">
-          <Link  className="nav-link" to="Register">Register</Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="Login">Login</Link>
-        </li>
-    
-        <li className="nav-item">
-              <Link  className="nav-link" to="Messages">Messeges</Link>
+              <Link  className="nav-link" to="Messages">Messages</Link>
         </li>
         <li className="nav-item">
               <Link className="nav-link" to="/" onClick={logout}>Logout</Link>
         </li>
-        
-        
-          
-    </ul>
+        </>
+        :
+        ''
+        }
+      </ul>
+
+      <ul className="navbar-nav ms-auto">
+        {!loginData? 
+        <>
+        <li className="nav-item">
+          <Link className="nav-link" to="login">
+            Login
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="register">
+            Register
+          </Link>
+        </li>
+        </>
+        :
+        ''
+      }
+      </ul>
     </div>
 </div>
 </nav>
