@@ -5,15 +5,16 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
 
-  let [User,SetUser]=useState({
+   let [User,SetUser]=useState({
     userName:"",
     email:"",
     password:"",
     cpassword:"",
     
   }
-  );
- 
+   );
+   let [msgError, setMsgError] = useState('');
+   let [loading,setLoading] = useState(false);
 
 let getUser=(e)=>{
    let myUser=  {...User }; 
@@ -21,12 +22,12 @@ let getUser=(e)=>{
    SetUser(myUser);
 }
 
+
 let navigate = useNavigate();
 function GoToLogin(){
    let path ='/Login';
    navigate(path);
    }
- 
 
 let submitData = async (e)=>{
       e.preventDefault();
@@ -34,7 +35,11 @@ let submitData = async (e)=>{
       console.log(data);
 
    if(data.message=='done'){
+      setLoading(true);
       GoToLogin();
+      }
+   else{
+         setMsgError(data.message)
       }
 }
 
@@ -49,6 +54,7 @@ return (
 
       <div className="card p-5 w-50 m-auto">
          <form onSubmit={submitData}>
+         {msgError? <div className="alert alert-danger">{msgError}</div>:""}
 
    <div className="">
       <label htmlFor="userName" className="form-label fs-5 "></label>
@@ -71,8 +77,9 @@ return (
       <label htmlFor="cpassword" className="form-label fs-5 "></label>
       <input onChange={getUser}  className="form-control my-1 " placeholder="Enter your cpassword" type="password" id="cpassword" name="cpassword" />
   </div>
-  <button type="sumbit" className='my-3  btn btn-default-outline'>Register</button>
-
+      <button type="submit" className='my-3  btn btn-default-outline'>
+         {loading?<i className="fa-solid fa-spinner fa-spin"></i>:"Register"}
+      </button>
          </form>
       </div>
 

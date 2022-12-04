@@ -16,7 +16,7 @@ export default function Navbar({loginData , logout}) {
         {loginData?
         <>
         <li className="nav-item">
-              <Link  className="nav-link" to="User">Users</Link>
+              <Link  className="nav-link" to="Users">Users</Link>
         </li>
         <li className="nav-item">
               <Link  className="nav-link" to="Messages">Messages</Link>
@@ -33,6 +33,9 @@ export default function Navbar({loginData , logout}) {
       <ul className="navbar-nav ms-auto">
         {!loginData? 
         <>
+        <li className="nav-item">
+          <Link  className="nav-link" to="Users">Users</Link>
+        </li>
         <li className="nav-item">
           <Link className="nav-link" to="login">
             Login

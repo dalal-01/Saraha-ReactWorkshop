@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import styles from './Login.module.css'
 
 export default function Login({setUserData}) {
 
@@ -39,8 +40,30 @@ let submbitrData = async (e)=>{
       else{
           setMsgError(data.message)
         }
+      if (data.messge !=undefined)
+      {
+        setMsgError(data.messge)
+      }
 }
 
+async function forgetPassword ()
+{
+  let {data} =await axios.patch("http://localhost:3000/api/v1/auth/sendCode",{ email: User.email })
+  if(data.message == "Done , plz check your Email To Change Password")
+  {
+    setMsgError(data.message)
+    GoToNewPassPage();
+  }
+  else
+  {
+    setMsgError(data.message)
+  }
+}
+
+function GoToNewPassPage(){
+  let path ='/NewPassword';
+  navigate(path);
+}
 return (
   <>
   
@@ -53,7 +76,7 @@ return (
   
   <div className="card p-5 w-50 m-auto">
     <form onSubmit={submbitrData}>
-{msgError? <div className="alert alert-danger">{msgError}</div>:""}
+      {msgError? <div className="alert alert-danger">{msgError}</div>:""}
     <div className="">
         <label htmlFor="email" className="form-label fs-5 "></label>
         <input onChange={getUser} className="form-control my-1 " placeholder="Enter your email" type="email" id="email" name="email" />
@@ -64,7 +87,8 @@ return (
       <input onChange={getUser} className="form-control my-1 " placeholder="Enter your password" type="password" id="password" name="password" />
     </div>
 
-  <button type="sumbit" className='my-3 btn btn-default-outline'>Login</button>
+    <button type="sumbit" className='my-3 btn btn-default-outline'>Login</button>
+    <p className={`${styles.frgpass}`} onClick={forgetPassword}>I Forget My Password</p>
     </form>
   </div>
 

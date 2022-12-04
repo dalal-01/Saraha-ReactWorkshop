@@ -4,8 +4,6 @@
     border-radius: 12px;
     padding: 5px;
     background-color: hsl(176, 73%, 88%);
-
-    
 }
 .i{
     border: 2px  ;
@@ -18,4 +16,5 @@
 }
 .msg{
     cursor: pointer;
+    margin-left: 150px;
 }

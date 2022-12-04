@@ -1,0 +1,9 @@
+.frgpass
+{
+    color: rgb(70, 68, 68);
+}
+.frgpass:hover
+{
+    color: hsl(177, 46%, 74%);
+    cursor: pointer;
+}
