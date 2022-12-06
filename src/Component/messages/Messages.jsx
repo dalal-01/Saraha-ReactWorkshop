@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export default function Messages() {
   let [messages, setMsg] = useState([]);
-  let msg =false;
+  let [Msg,SetM] = useState(false);
   const userToken = localStorage.getItem("token");
   //let navigate = useNavigate();
 
@@ -30,9 +30,9 @@ export default function Messages() {
           },
         })
         .then((res) => {
+          SetM(true);
           setMsg(res.data.messageList);
-          if(res.data.messageList != null)
-            msg =true;
+          if(res.data.messageList != null);
         });
     }
   };
@@ -41,43 +41,54 @@ export default function Messages() {
     getMsg();
   }, [messages]);
 
-  return (
-    <>
-      <div className="container text-center mt-5 p-5 ">
-        <div className="row">
-          {messages.map((msg, index) => (
-            <div className={`col-md-12 ${styles.box} `} key={index}>
+
+  return(<>
+  
+  
+  {Msg?<>
+    <div className="container text-center p-5 ">
+       <div className="row">
+         {messages.map((msg, index) => (
+          <div className={`col-md-12 ${styles.box} m-5`} key={index}>
+           <div className="col-md-1 text-muted">
+            <h4>
+             <i className={` fa-solid fa-envelope-open`}></i>Your Msg
+            </h4>
+       </div>
+         <h4 className={`p-5 ${styles.head}`}>{msg.text}</h4>
+         <button
+         className={` ${styles.b}  `}
+        onClick={() => deleteMsg(msg._id)}
+         >
+         Delete
+       </button>
+    </div>))}
+</div>
+</div></>
+:''}
+  
+  {!Msg?
+  <>
+  <div className="container text-center p-5">
+         <div className="row">
+              <div className={`col-md-12 ${styles.box}`}>
               <div className="col-md-1 text-muted">
                 <h4>
-                  <i className={` fa-solid fa-envelope-open`}></i>Your Msg
+                  <i className={`fa-solid fa-envelope-open`}></i>
                 </h4>
               </div>
-              <h4 className={`p-5 ${styles.head}`}>{msg.text}</h4>
+              <h4 className={`p-5 `}>You don't have any message yet!</h4>
               <button
-                className={` ${styles.b}  `}
-                onClick={() => deleteMsg(msg._id)}
-              >
-                Delete
+                className={` ${styles.b}`}>
+                  <Link to='/Users' className={` ${styles.sendmsg}`}>Send Message</Link>
               </button>
             </div>
-          ))}
-          {
-            msg?"":            
-            <div className={`col-md-12 ${styles.box} `}>
-            <div className="col-md-1 text-muted">
-              <h4>
-                <i className={` fa-solid fa-envelope-open`}></i>
-              </h4>
             </div>
-            <h4 className={`p-5 ${styles.head}`}>You don't have any message yet!</h4>
-            <button
-              className={` ${styles.b}`}>
-                <Link to='/Users' className={` ${styles.sendmsg}`}>Send Message</Link>
-            </button>
-          </div>
-          }
         </div>
-      </div>
-    </>
-  );
+      </>
+  
+  
+  :''}
+  
+  </>)
 }
