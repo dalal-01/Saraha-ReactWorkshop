@@ -1,5 +1,6 @@
-import React,{useState} from 'react'
+import React,{useState } from 'react'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function NewPassword() {
 
@@ -7,8 +8,7 @@ export default function NewPassword() {
     email:"",  
     code:"",
     password:"", 
-  }
-  );
+  });
   let[msgError,setMsgError]=useState('');
 
   let getUser=(e)=>{
@@ -19,18 +19,26 @@ export default function NewPassword() {
 
   let submitData = async (e)=>{
     e.preventDefault();
-    let {data}= await axios.patch("http://localhost:3000/api/v1/auth/forgetpassword",{email:User.email},{code:User.code},{password:User.password});
-    if(true)
+    let {data}= await axios.patch("http://localhost:3000/api/v1/auth/forgetpassword",User);
+    console.log(data,User)
+    if(data.message == "Done")
     {
-      setMsgError(data.message)
+      GoToLogin();
     }
     else
     {
       setMsgError(data.message)
     }
-    console.log(data);
     
   }
+
+
+  let navigate = useNavigate();
+
+    function GoToLogin(){
+      let path ='/Login';
+      navigate(path);
+    }
 
   return (
     <>
@@ -50,12 +58,12 @@ export default function NewPassword() {
 
     <div className="">
         <label htmlFor="code" className="form-label fs-5 "></label>
-      <input onChange={getUser} className="form-control my-1 " placeholder="Enter Code you received" type="text" id="text" name="text" />
+      <input onChange={getUser} className="form-control my-1 " placeholder="Enter Code you received" type="text" id="text" name="code" />
     </div>
 
     <div className="">
         <label htmlFor="password" className="form-label fs-5 "></label>
-      <input onChange={getUser} className="form-control my-1 " placeholder="Enter your password" type="password" id="password" name="password" />
+      <input onChange={getUser} className="form-control my-1 " placeholder="Enter your new password" type="password" id="password" name="password" />
     </div>
 
     <button type="sumbit" className='my-3 btn btn-default-outline'>set New password</button>

@@ -10,6 +10,7 @@ export default function SendMessage() {
     let [message , setMessage] = useState({
       text:'',
     })
+    let[msgState,setMsgState]=useState('');
 
 
     let getMessage=(e)=>{
@@ -25,7 +26,9 @@ export default function SendMessage() {
         let {data}= await axios.post(`http://localhost:3000/api/v1/message/${currentId}`,message);
         console.log(data);
         if(data.message =='Dnoe ')
-        alert("message sent")
+        {
+          setMsgState("Message has been sent")
+        }
    }
 
      
@@ -41,6 +44,7 @@ export default function SendMessage() {
         <img src="img/avatar.png" className="avatar"/>
       </a>
       <h3 className="py-2">{userName}</h3>
+      {msgState? <div className="alert alert-success w-50 m-auto mb-3">{msgState}</div>:""}
       <textarea name="text" onChange={getMessage} placeholder='Write a message' cols="10" rows="8" className='w-50 m-auto'></textarea>
       <button type='submit' className="message m-auto mt-3">Send Message</button>
     </div>
