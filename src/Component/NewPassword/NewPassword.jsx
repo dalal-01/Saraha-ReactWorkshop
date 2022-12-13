@@ -20,7 +20,7 @@ export default function NewPassword() {
   let submitData = async (e)=>{
     e.preventDefault();
     let {data}= await axios.patch("http://localhost:3000/api/v1/auth/forgetpassword",User);
-    console.log(data,User)
+    //console.log(data,User)
     if(data.message == "Done")
     {
       GoToLogin();
